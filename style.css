@@ -1,0 +1,90 @@
+/* --- Base styles --- */
+* { box-sizing: border-box; }
+:root {
+  --bg1: #1d2671;
+  --bg2: #c33764;
+  --text: #ffffff;
+  --accent: #ffd700;
+  --accent-alt: #00ffcc;
+}
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text);
+  background: linear-gradient(135deg, var(--bg1), var(--bg2));
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+/* --- Hero section --- */
+.hero {
+  text-align: center;
+  padding: 2rem;
+  max-width: 900px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 1.2s ease;
+}
+h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 .25rem; }
+h2 { font-size: clamp(1.1rem, 2.5vw, 1.5rem); font-weight: 500; opacity: .95; margin: .25rem 0 1rem; }
+.tagline { font-size: clamp(1rem, 2vw, 1.25rem); opacity: .95; }
+.accent { color: var(--accent); }
+.accent-alt { color: var(--accent-alt); }
+
+.actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: .75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn {
+  padding: .75rem 1rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(4px);
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+}
+.btn:hover { transform: translateY(-2px); background: rgba(255,255,255,.22); }
+.btn:active { transform: translateY(0); }
+.btn.outline { background: transparent; border-color: rgba(255,255,255,.5); }
+
+footer {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: .9rem;
+  opacity: .75;
+  z-index: 1;
+}
+
+/* --- Floating bubbles --- */
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), rgba(255,255,255,.08));
+  filter: blur(0.2px);
+  animation: floatUp var(--dur, 15s) linear infinite;
+  z-index: 0;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(.6); opacity: 0; }
+  15% { opacity: .9; }
+  85% { opacity: .9; }
+  100% { transform: translateY(-12vh) scale(1.1); opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
